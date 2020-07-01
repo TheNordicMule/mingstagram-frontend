@@ -1,58 +1,54 @@
 .NavBar {
-       display: flex;
-       -webkit-box-pack: justify;
-       justify-content: space-between;
-       -webkit-box-align: center;
-       align-items: center;
-       width: 930px;
-       margin: 0px auto;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 60%;
+  margin: 0px auto;
 }
 
 #InstagramIcon {
-    transform: scale(0.6);
+  transform: scale(0.6);
 }
 
 ul {
-    display: flex;
-    position: relative;
-    top: 3px;
-    list-style-type: none;
+  display: flex;
+  position: relative;
+  top: 3px;
+  list-style-type: none;
 }
 
 li {
-    margin: 10px;
+  margin: 10px;
 }
 
 .NavBarWrapper {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    z-index: 10;
-    border-bottom: 1px solid rgb(219, 219, 219);
-    padding: .3rem 0px;
-    display: block
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  border-bottom: 1px solid rgb(219, 219, 219);
+  padding: 0.3rem 0px;
+  display: block;
 }
 
 body {
-    background-color:rgb(250, 250, 250) !important;
-    display:block;
-    font-family:
-    "Segoe UI",
-    Helvetica,
-    Arial,
-    sans-serif;
-    font-size:14px;
-    font-stretch:100%;
-    font-weight:400;
-    overflow-y:scroll;
-    padding-bottom:0px;
-    padding-left:0px;
-    padding-right:0px;
-    padding-top:0px;
+  background-color: rgb(250, 250, 250) !important;
+  display: block;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-stretch: 100%;
+  font-weight: 400;
+  overflow-y: scroll;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
 }
 
 li:hover,
 #InstagramIcon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
