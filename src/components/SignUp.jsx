@@ -1,5 +1,5 @@
 import React from "react";
-import { InstagramIcon } from "./icons";
+import { InstagramIcon } from "./Icons";
 import Card from "react-bootstrap/Card";
 import SignUpForm from "./SignUpForm";
 import Container from "react-bootstrap/Container";

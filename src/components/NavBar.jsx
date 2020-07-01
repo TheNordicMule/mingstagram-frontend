@@ -5,7 +5,7 @@ import {
   InstagramIcon,
   HomeIcon,
   CompassIcon,
-} from "./icons";
+} from "./Icons";
 import "../styles/App.css";
 
 const NavBar = () => {
