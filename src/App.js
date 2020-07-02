@@ -8,7 +8,9 @@ import { UserContext } from "./contexts/UserContext";
 
 function App() {
   const { user } = useContext(UserContext);
-  return <>{user ? <Home /> : <Auth />} </>;
+  return <>
+  {user ? <Home /> : <Auth />} 
+  </>;
 }
 
 export default App;
