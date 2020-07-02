@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles/App.css";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Auth from './pages/Auth'
+import Auth from "./pages/Auth";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
-  return (
-    <>
-      {/* <NavBar /> */}
-      <Auth />
-    </>
-  );
+  const user = useContext(UserContext);
+
+  return <>{!user ? <Auth /> : null}</>;
 }
 
 export default App;

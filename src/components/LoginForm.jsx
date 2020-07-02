@@ -7,8 +7,20 @@ const LoginForm = () => {
   const username = useInput("");
   const password = useInput("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const url = `${process.env.REACT_APP_BACKEND_API}/auth/login`;
+    const result = await fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
+      }),
+    });
+    console.log(await result.json());
     password.setValue("");
     username.setValue("");
   };
