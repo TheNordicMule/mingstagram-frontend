@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import useInput from "../hooks/useInput";
+import { UserContext } from "../contexts/UserContext";
 
 const LoginForm = () => {
   const username = useInput("");
   const password = useInput("");
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +22,12 @@ const LoginForm = () => {
         password: password.value,
       }),
     });
-    console.log(await result.json());
+    const body = await result.json();
+    if (body.success) {
+      localStorage.setItem("token", body.token);
+    } else {
+      console.log(body.message);
+    }
     password.setValue("");
     username.setValue("");
   };
