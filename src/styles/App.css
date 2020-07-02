@@ -12,6 +12,17 @@
   transform: scale(0.6);
 }
 
+@media screen and (max-width: 500px) {
+  #InstagramIcon {
+    display: none;
+  }
+  li {
+    margin: 15%;
+    display:flex;
+    justify-content: space-evenly;
+  }
+}
+
 ul {
   display: flex;
   position: relative;
