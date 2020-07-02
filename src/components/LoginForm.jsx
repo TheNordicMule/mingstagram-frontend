@@ -28,8 +28,10 @@ const LoginForm = () => {
     const body = await result.json();
     if (body.success) {
       localStorage.setItem("token", body.token);
-      console.log(body);
+      const user = JSON.stringify(body.user);
+      localStorage.setItem("user", user);
       setMessage("Login in successfully!");
+      setUser(user);
       setShow(true);
     } else {
       setMessage(body.message);
@@ -53,7 +55,12 @@ const LoginForm = () => {
         }}
       >
         <Toast.Header>
-          <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" style={{placement: "flex"}}/>
+          <img
+            src="holder.js/20x20?text=%20"
+            className="rounded mr-2"
+            alt=""
+            style={{ placement: "flex" }}
+          />
           <strong className="mr-auto">Update Message</strong>
           <small>Just Now</small>
         </Toast.Header>
