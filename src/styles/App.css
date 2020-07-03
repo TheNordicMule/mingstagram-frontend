@@ -114,6 +114,9 @@ li:hover,
   box-sizing: border-box;
   display: flex;
   position: relative;
+  flex-direction: column;
+  padding-bottom: 15200px;
+  padding-top: 0px;
 }
 
 .suggestion {

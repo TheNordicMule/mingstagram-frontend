@@ -13,6 +13,7 @@ function App() {
       {/* {user ? <Home /> : <Auth />}  */}
       <NavBar />
       <Home />
+      {/* <Auth /> */}
     </>
   );
 }
