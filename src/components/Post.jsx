@@ -1,4 +1,5 @@
 import React from "react";
+import Comment from './Comment';
 
 const Portrait = () => {
   return (
@@ -55,9 +56,7 @@ const Pic = () => {
   );
 };
 
-const Comment = () => {
-  return <div>comment section</div>;
-};
+
 
 const Post = () => {
   return (
