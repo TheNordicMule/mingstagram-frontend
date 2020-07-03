@@ -100,17 +100,7 @@ li:hover,
   align-items: stretch;
   border: 0 solid #000;
   box-sizing: border-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
   position: relative;
 }
 
@@ -124,8 +114,12 @@ li:hover,
   width: 100%;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 770px) {
   .suggestion {
     display: none;
+  }
+
+  .post-section {
+    margin: 0 auto;
   }
 }
