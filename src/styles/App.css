@@ -13,13 +13,24 @@
 }
 
 @media screen and (max-width: 500px) {
-  #InstagramIcon {
-    display: none;
-  }
   li {
-    margin: 15%;
+    margin: auto 20%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+  }
+  .NavBar {
+    width: 100%;
+    margin: auto 0;
+  }
+  .IconGroup {
+    margin: none;
+    padding-bottom: none;
+  }
+  .NavBarWrapper {
+    min-width: 500px;
+  }
+  ul {
+    padding-bottom: 0;
   }
 }
 
