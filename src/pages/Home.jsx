@@ -1,7 +1,12 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <Container fluid className="content">
+      <div>Home</div>
+    </Container>
+  );
 };
 
 export default Home;
