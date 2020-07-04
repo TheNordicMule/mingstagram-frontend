@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Post from '../components/Post';
+import Post from "../components/Post";
+import Suggestion from "../components/Suggestion";
 
 const Home = () => {
   return (
@@ -10,7 +11,9 @@ const Home = () => {
         <Post />
         <Post />
       </div>
-      <div className="suggestion">Suggestions</div>
+      <div className="suggestion">
+        <Suggestion />
+      </div>
     </Container>
   );
 };
