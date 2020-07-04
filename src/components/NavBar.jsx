@@ -5,6 +5,7 @@ import {
   InstagramIcon,
   HomeIcon,
   CompassIcon,
+  DefaultAvatar,
 } from "./Icons";
 import "../styles/App.css";
 
@@ -26,6 +27,9 @@ const NavBar = () => {
             </li>
             <li>
               <HeartIcon />
+            </li>
+            <li>
+              <DefaultAvatar />
             </li>
           </ul>
         </div>
