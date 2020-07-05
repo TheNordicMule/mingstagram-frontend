@@ -46,7 +46,7 @@ const CommentStatus = (props) => {
           margin: "0.4em 0",
         }}
       >
-        <span style={{ fontWeight: "500" }}>{props.postedBy}</span> {props.body}
+        <span style={{ fontWeight: "500" }}>{props.username}</span> {props.body}
       </div>
       <div style={{ color: "rgb(178, 178, 178)" }}>{time}</div>
     </div>
@@ -74,7 +74,7 @@ const AddComment = () => {
 };
 
 const Comment = (props) => {
-  const { comments, createdAt, likes, body, postedBy } = props;
+  const { comments, createdAt, likes, body, username } = props;
   return (
     <div>
       <ActionGroup />
@@ -83,7 +83,7 @@ const Comment = (props) => {
         createdAt={createdAt}
         likes={likes}
         body={body}
-        postedBy={postedBy}
+        username={username}
       />
       <AddComment />
     </div>

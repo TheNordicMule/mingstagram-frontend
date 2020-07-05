@@ -1,15 +1,20 @@
 import React from "react";
-import Comment from './Comment';
+import Comment from "./Comment";
 
-const Portrait = () => {
+const Portrait = (props) => {
   return (
     <div style={{ width: "32px", height: "32px" }}>
-        <img
-          src="https://www.adobe.com/content/dam/cc/us/en/creativecloud/photography/discover/portrait-photography/CODERED_B1_portrait_photography-P4a_438x447.jpg.img.jpg"
-          alt="user"
-          style={{ cursor: "pointer", width: "100%", height: "100%", borderRadius: "30px" }}
-        />
-      </div>
+      <img
+        src={props.photo}
+        alt="user"
+        style={{
+          cursor: "pointer",
+          width: "100%",
+          height: "100%",
+          borderRadius: "30px",
+        }}
+      />
+    </div>
   );
 };
 
@@ -26,9 +31,9 @@ const Header = (props) => {
       }}
       alt="first-post-row"
     >
-      <Portrait />
+      <Portrait photo={props.photo}/>
       <div style={{ marginLeft: "14px", fontWeight: "600" }}>
-        {props.postedBy}
+        {props.username}
       </div>
     </div>
   );
@@ -46,10 +51,9 @@ const Pic = (props) => {
   );
 };
 
-
-
 const Post = (props) => {
-  const {photo, comments, createdAt, likes, body, postedBy} = props.post;
+  const { photo, comments, createdAt, likes, body, postedBy } = props.post;
+  const { photo: postedByPhoto, username: postedByUsername} = props.post.postedBy;
   return (
     <div
       style={{
@@ -62,14 +66,14 @@ const Post = (props) => {
         marginBottom: "60px",
       }}
     >
-      <Header postedBy={postedBy} />
+      <Header photo={postedByPhoto} username={postedByUsername} />
       <Pic photo={[photo]} />
       <Comment
         comments={comments}
         createdAt={createdAt}
         likes={likes}
         body={body}
-        postedBy={postedBy}
+        username={postedByUsername}
       />
     </div>
   );

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import Container from "react-bootstrap/Container";
+import { FeedContext } from "../contexts/FeedContext";
 import Post from "../components/Post";
 import Suggestion from "../components/Suggestion";
 import getPosts from "../utils/getPosts";
 
 const Home = () => {
-  const [feed, setFeed] = useState(null);
+  const { feed, setFeed } = useContext(FeedContext);
   useEffect(() => {
     getPosts()
       .then((res) => {
@@ -17,7 +18,14 @@ const Home = () => {
   return (
     <Container fluid className="content">
       <div className="post-section">
-        {feed ? feed.map((post) => <Post post={post} key={post._id} />) : null}
+        {feed
+          ? feed.map((post) => (
+              <Post
+                key={post._id}
+                post={post}
+              />
+            ))
+          : null}
       </div>
       <div className="suggestion">
         <Suggestion />

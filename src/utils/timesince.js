@@ -19,7 +19,6 @@ const timesince = (timestamp)=> {
         default:
             return `${Math.floor(seconds/1)} seconds ago`;
     }
-    return timesince;
 }
 
 export default timesince;
