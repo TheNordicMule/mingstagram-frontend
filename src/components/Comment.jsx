@@ -1,5 +1,6 @@
 import React from "react";
 import { CommentIcon, HeartIcon, ChatIcon } from "./Icons";
+import timesince from "../utils/timesince";
 
 const ActionGroup = () => {
   return (
@@ -29,6 +30,7 @@ const ActionGroup = () => {
 };
 
 const CommentStatus = (props) => {
+  const time = timesince(props.createdAt);
   return (
     <div
       style={{
@@ -46,7 +48,7 @@ const CommentStatus = (props) => {
       >
         <span style={{ fontWeight: "500" }}>{props.postedBy}</span> {props.body}
       </div>
-      <div style={{ color: "rgb(178, 178, 178)" }}>{props.createdAt}</div>
+      <div style={{ color: "rgb(178, 178, 178)" }}>{time}</div>
     </div>
   );
 };
@@ -72,7 +74,7 @@ const AddComment = () => {
 };
 
 const Comment = (props) => {
-  const {comments, createdAt, likes, body, postedBy} = props;
+  const { comments, createdAt, likes, body, postedBy } = props;
   return (
     <div>
       <ActionGroup />
