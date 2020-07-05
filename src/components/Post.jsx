@@ -4,28 +4,16 @@ import Comment from './Comment';
 const Portrait = () => {
   return (
     <div style={{ width: "32px", height: "32px" }}>
-      {/* <div
-        style={{
-          position: "absolute",
-          top: "-5px",
-          left: "-5px",
-          width: "42px",
-          height: "42px",
-          display: 'flex',
-          alignContent: "center"
-        }}
-      > */}
         <img
           src="https://www.adobe.com/content/dam/cc/us/en/creativecloud/photography/discover/portrait-photography/CODERED_B1_portrait_photography-P4a_438x447.jpg.img.jpg"
           alt="user"
           style={{ cursor: "pointer", width: "100%", height: "100%", borderRadius: "30px" }}
         />
       </div>
-    // </div>
   );
 };
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div
       style={{
@@ -39,18 +27,20 @@ const Header = () => {
       alt="first-post-row"
     >
       <Portrait />
-      <div style={{ marginLeft: "14px", fontWeight: "600" }}>Elon Musk</div>
+      <div style={{ marginLeft: "14px", fontWeight: "600" }}>
+        {props.postedBy}
+      </div>
     </div>
   );
 };
 
-const Pic = () => {
+const Pic = (props) => {
   return (
     <div>
       <img
         style={{ width: "100%", height: "100%" }}
         alt="pic"
-        src="https://wallpapercave.com/wp/wp2038961.jpg"
+        src={props.photo}
       ></img>
     </div>
   );
@@ -58,7 +48,8 @@ const Pic = () => {
 
 
 
-const Post = () => {
+const Post = (props) => {
+  const {photo, comments, createdAt, likes, body, postedBy} = props.post;
   return (
     <div
       style={{
@@ -71,9 +62,15 @@ const Post = () => {
         marginBottom: "60px",
       }}
     >
-      <Header />
-      <Pic />
-      <Comment />
+      <Header postedBy={postedBy} />
+      <Pic photo={[photo]} />
+      <Comment
+        comments={comments}
+        createdAt={createdAt}
+        likes={likes}
+        body={body}
+        postedBy={postedBy}
+      />
     </div>
   );
 };

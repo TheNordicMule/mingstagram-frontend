@@ -28,7 +28,7 @@ const ActionGroup = () => {
   );
 };
 
-const CommentStatus = () => {
+const CommentStatus = (props) => {
   return (
     <div
       style={{
@@ -37,16 +37,16 @@ const CommentStatus = () => {
         padding: "0.3rem 1rem 1rem",
       }}
     >
-      <div style={{ fontWeight: "500" }}>3 likes</div>
+      <div style={{ fontWeight: "500" }}>{props.likes.length} likes</div>
       <div
         style={{
           display: "block",
           margin: "0.4em 0",
         }}
       >
-        <span style={{ fontWeight: "500" }}>frank</span> wow!
+        <span style={{ fontWeight: "500" }}>{props.postedBy}</span> {props.body}
       </div>
-      <div style={{ color: "rgb(178, 178, 178)" }}>4 days ago</div>
+      <div style={{ color: "rgb(178, 178, 178)" }}>{props.createdAt}</div>
     </div>
   );
 };
@@ -71,11 +71,18 @@ const AddComment = () => {
   );
 };
 
-const Comment = () => {
+const Comment = (props) => {
+  const {comments, createdAt, likes, body, postedBy} = props;
   return (
     <div>
       <ActionGroup />
-      <CommentStatus />
+      <CommentStatus
+        comments={comments}
+        createdAt={createdAt}
+        likes={likes}
+        body={body}
+        postedBy={postedBy}
+      />
       <AddComment />
     </div>
   );
