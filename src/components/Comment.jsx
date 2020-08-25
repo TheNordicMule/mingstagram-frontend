@@ -4,7 +4,40 @@ import timesince from "../utils/timesince";
 import getPosts from "../utils/getPosts";
 import { FeedContext } from "../contexts/FeedContext";
 
-const ActionGroup = () => {
+const ActionGroup = (props) => {
+  const { setFeed } = useContext(FeedContext);
+  const id = props.id;
+  const [loading, setLoading] = useState(false);
+
+  async function toggleLike() {
+    const url = `${process.env.REACT_APP_BACKEND_API}/post/${id}/like`;
+    const token = localStorage.getItem("token");
+    try {
+      const result = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await result.json();
+      setLoading(true);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (loading === true) {
+      getPosts()
+        .then((res) => {
+          setFeed(res);
+        })
+        .catch((error) => console.log(error));
+      setLoading(false);
+    }
+  }, [loading, setLoading, setFeed]);
+
   return (
     <div
       className="action-group"
@@ -23,7 +56,10 @@ const ActionGroup = () => {
           boxSizing: "border-box",
         }}
       >
-        <HeartIcon style={{ marginRight: "2rem", cursor: "pointer" }} />
+        <HeartIcon
+          style={{ marginRight: "2rem", cursor: "pointer" }}
+          method={toggleLike}
+        />
         <CommentIcon style={{ marginRight: "2rem", cursor: "pointer" }} />
         <ChatIcon style={{ marginRight: "2rem", cursor: "pointer" }} />
       </div>
@@ -147,7 +183,7 @@ const Comment = (props) => {
   const { comments, createdAt, likes, body, username, id } = props;
   return (
     <div>
-      <ActionGroup />
+      <ActionGroup id={id} />
       <CommentStatus
         comments={comments}
         createdAt={createdAt}
