@@ -52,7 +52,7 @@ const Pic = (props) => {
 };
 
 const Post = (props) => {
-  const { photo, comments, createdAt, likes, body } = props.post;
+  const { photo, comments, createdAt, likes, body, _id: id } = props.post;
   const { photo: postedByPhoto, username: postedByUsername} = props.post.postedBy;
   return (
     <div
@@ -74,6 +74,7 @@ const Post = (props) => {
         likes={likes}
         body={body}
         username={postedByUsername}
+        id={id}
       />
     </div>
   );

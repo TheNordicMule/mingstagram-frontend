@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CommentIcon, HeartIcon, ChatIcon } from "./Icons";
 import timesince from "../utils/timesince";
+import getPosts from "../utils/getPosts";
+import { FeedContext } from "../contexts/FeedContext";
 
 const ActionGroup = () => {
   return (
@@ -64,6 +66,7 @@ const CommentStatus = (props) => {
           <IndividualComment
             username={element.user.username}
             body={element.text}
+            key={element._id}
           />
         ))}
         {/* {comments.length > 0 && (
@@ -78,7 +81,46 @@ const CommentStatus = (props) => {
   );
 };
 
-const AddComment = () => {
+const AddComment = (props) => {
+  const { setFeed } = useContext(FeedContext);
+  const id = props.id;
+  const [newComment, setNewComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  async function handleSubmit(e) {
+    if (e.keyCode !== 13 || e.shiftKey === true) {
+      return;
+    }
+    const url = `${process.env.REACT_APP_BACKEND_API}/post/${id}/comment`;
+    const token = localStorage.getItem("token");
+    const data = { text: newComment };
+    try {
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await result.json();
+      setNewComment("");
+      setLoading(true);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (loading === true) {
+      getPosts()
+        .then((res) => {
+          setFeed(res);
+        })
+        .catch((error) => console.log(error));
+      setLoading(false);
+    }
+  }, [loading, setLoading, setFeed]);
+
   return (
     <div>
       <textarea
@@ -93,13 +135,16 @@ const AddComment = () => {
           resize: "none",
           borderLeftStyle: "none",
         }}
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
+        onKeyDown={handleSubmit}
       ></textarea>
     </div>
   );
 };
 
 const Comment = (props) => {
-  const { comments, createdAt, likes, body, username } = props;
+  const { comments, createdAt, likes, body, username, id } = props;
   return (
     <div>
       <ActionGroup />
@@ -110,7 +155,7 @@ const Comment = (props) => {
         body={body}
         username={username}
       />
-      <AddComment />
+      <AddComment id={id} />
     </div>
   );
 };
