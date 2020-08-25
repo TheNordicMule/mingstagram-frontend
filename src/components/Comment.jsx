@@ -29,8 +29,20 @@ const ActionGroup = () => {
   );
 };
 
+const IndividualComment = (props) => {
+  return (
+    <span>
+      <span style={{ fontWeight: "500", marginRight: "0.2rem" }}>
+        {props.username}
+      </span>
+      {props.body}
+    </span>
+  );
+};
+
 const CommentStatus = (props) => {
   const time = timesince(props.createdAt);
+  const comments = props.comments;
   return (
     <div
       style={{
@@ -42,11 +54,24 @@ const CommentStatus = (props) => {
       <div style={{ fontWeight: "500" }}>{props.likes.length} likes</div>
       <div
         style={{
-          display: "block",
+          display: "flex",
+          flexDirection: "column",
           margin: "0.4em 0",
         }}
       >
-        <span style={{ fontWeight: "500" }}>{props.username}</span> {props.body}
+        <IndividualComment username={props.username} body={props.body} />
+        {comments.map((element) => (
+          <IndividualComment
+            username={element.user.username}
+            body={element.text}
+          />
+        ))}
+        {/* {comments.length > 0 && (
+          <IndividualComment
+            username={comments[0].user.username}
+            body={comments[0].text}
+          />
+        )} */}
       </div>
       <div style={{ color: "rgb(178, 178, 178)" }}>{time}</div>
     </div>

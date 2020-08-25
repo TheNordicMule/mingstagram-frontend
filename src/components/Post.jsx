@@ -54,7 +54,6 @@ const Pic = (props) => {
 const Post = (props) => {
   const { photo, comments, createdAt, likes, body } = props.post;
   const { photo: postedByPhoto, username: postedByUsername} = props.post.postedBy;
-  console.log(comments);
   return (
     <div
       style={{
