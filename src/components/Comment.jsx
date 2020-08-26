@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CommentIcon, HeartIcon, ChatIcon } from "./Icons";
+import { CommentIcon, HeartIcon, ChatIcon, FilledHeartIcon } from "./Icons";
 import timesince from "../utils/timesince";
 import getPosts from "../utils/getPosts";
 import { FeedContext } from "../contexts/FeedContext";
@@ -8,6 +8,7 @@ const ActionGroup = (props) => {
   const { setFeed } = useContext(FeedContext);
   const id = props.id;
   const [loading, setLoading] = useState(false);
+  const { isLikedByMe } = props;
 
   async function toggleLike() {
     const url = `${process.env.REACT_APP_BACKEND_API}/post/${id}/like`;
@@ -56,10 +57,18 @@ const ActionGroup = (props) => {
           boxSizing: "border-box",
         }}
       >
-        <HeartIcon
-          style={{ marginRight: "2rem", cursor: "pointer" }}
-          method={toggleLike}
-        />
+        {isLikedByMe && (
+          <FilledHeartIcon
+            style={{ marginRight: "1rem", cursor: "pointer" }}
+            onClick={toggleLike}
+          />
+        )}
+        {!isLikedByMe && (
+          <HeartIcon
+            style={{ marginRight: "1rem", cursor: "pointer" }}
+            onClick={toggleLike}
+          />
+        )}
         <CommentIcon style={{ marginRight: "2rem", cursor: "pointer" }} />
         <ChatIcon style={{ marginRight: "2rem", cursor: "pointer" }} />
       </div>
@@ -180,10 +189,10 @@ const AddComment = (props) => {
 };
 
 const Comment = (props) => {
-  const { comments, createdAt, likes, body, username, id } = props;
+  const { comments, createdAt, likes, body, username, id, isLikedByMe } = props;
   return (
     <div>
-      <ActionGroup id={id} />
+      <ActionGroup id={id} isLikedByMe={isLikedByMe} />
       <CommentStatus
         comments={comments}
         createdAt={createdAt}

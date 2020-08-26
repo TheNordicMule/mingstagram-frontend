@@ -31,7 +31,7 @@ const Header = (props) => {
       }}
       alt="first-post-row"
     >
-      <Portrait photo={props.photo}/>
+      <Portrait photo={props.photo} />
       <div style={{ marginLeft: "14px", fontWeight: "600" }}>
         {props.username}
       </div>
@@ -52,8 +52,21 @@ const Pic = (props) => {
 };
 
 const Post = (props) => {
-  const { photo, comments, createdAt, likes, body, _id: id } = props.post;
-  const { photo: postedByPhoto, username: postedByUsername} = props.post.postedBy;
+  //whole post gets routed here
+  const {
+    photo,
+    comments,
+    createdAt,
+    likes,
+    body,
+    _id: id,
+    isLikedByMe,
+  } = props.post;
+  const {
+    photo: postedByPhoto,
+    username: postedByUsername,
+  } = props.post.postedBy;
+  console.log(isLikedByMe);
   return (
     <div
       style={{
@@ -75,6 +88,7 @@ const Post = (props) => {
         body={body}
         username={postedByUsername}
         id={id}
+        isLikedByMe={isLikedByMe}
       />
     </div>
   );
