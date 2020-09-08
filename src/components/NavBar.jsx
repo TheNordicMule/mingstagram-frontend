@@ -1,12 +1,12 @@
 import React from "react";
 import {
   HeartIcon,
-  ChatIcon,
   InstagramIcon,
   HomeIcon,
   CompassIcon,
   DefaultAvatar,
 } from "./Icons";
+import UploadImage from "./UploadImage";
 import "../styles/App.css";
 
 const NavBar = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
               <HomeIcon />
             </li>
             <li>
-              <ChatIcon />
+              <UploadImage />
             </li>
             <li>
               <CompassIcon />

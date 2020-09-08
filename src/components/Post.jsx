@@ -66,7 +66,6 @@ const Post = (props) => {
     photo: postedByPhoto,
     username: postedByUsername,
   } = props.post.postedBy;
-  console.log(isLikedByMe);
   return (
     <div
       style={{

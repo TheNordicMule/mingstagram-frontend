@@ -67,9 +67,10 @@ export const HeartIcon = (props) => {
   );
 };
 
-export const ChatIcon = () => {
+export const ChatIcon = (props) => {
   return (
     <svg
+      {...props}
       aria-label="Direct"
       fill="#262626"
       height="22"
