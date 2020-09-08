@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ChatIcon } from "./Icons";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import useInput from "../hooks/useInput";
+import getPosts from "../utils/getPosts";
+import { FeedContext } from "../contexts/FeedContext";
 
 const UploadImage = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { setFeed } = useContext(FeedContext);
+  const [loading, setLoading] = useState(false);
 
   const UploadModal = () => {
     const link = useInput("");
@@ -19,21 +23,36 @@ const UploadImage = () => {
       const bodyValue = description.value;
       const token = localStorage.getItem("token");
       const url = `${process.env.REACT_APP_BACKEND_API}/post/`;
-      const result = await fetch(url, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          photo: photoValue,
-          body: bodyValue,
-        }),
-      });
-      const body = await result.json();
-      console.log(body);
+      try {
+        const result = await fetch(url, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            photo: photoValue,
+            body: bodyValue,
+          }),
+        });
+        await result.json();
+        setLoading(true);
+      } catch (e) {
+        console.log(e);
+      }
       handleClose();
     }
+
+    useEffect(() => {
+      if (loading === true) {
+        getPosts()
+          .then((res) => {
+            setFeed(res);
+          })
+          .catch((error) => console.log(error));
+        setLoading(false);
+      }
+    }, []);
 
     return (
       <>
