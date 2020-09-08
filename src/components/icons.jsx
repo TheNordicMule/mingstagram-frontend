@@ -1,11 +1,11 @@
 import React from "react";
 import logo from "../assets/logo.png";
 
-export const InstagramIcon = () => {
+const InstagramIcon = () => {
   return <img src={logo} alt="instagramIcon" id="InstagramIcon"></img>;
 };
 
-export const HomeIcon = () => {
+const HomeIcon = () => {
   return (
     <svg
       aria-label="Home"
@@ -19,7 +19,7 @@ export const HomeIcon = () => {
   );
 };
 
-export const CompassIcon = () => {
+const CompassIcon = () => {
   return (
     <svg
       aria-label="Find People"
@@ -37,7 +37,7 @@ export const CompassIcon = () => {
   );
 };
 
-export const FilledHeartIcon = (props) => {
+const FilledHeartIcon = (props) => {
   return (
     <svg
       {...props}
@@ -52,7 +52,7 @@ export const FilledHeartIcon = (props) => {
   );
 };
 
-export const HeartIcon = (props) => {
+const HeartIcon = (props) => {
   return (
     <svg
       {...props}
@@ -67,7 +67,7 @@ export const HeartIcon = (props) => {
   );
 };
 
-export const ChatIcon = (props) => {
+const ChatIcon = (props) => {
   return (
     <svg
       {...props}
@@ -82,7 +82,7 @@ export const ChatIcon = (props) => {
   );
 };
 
-export const CommentIcon = () => {
+const CommentIcon = () => {
   return (
     <svg
       id="Capa_1"
@@ -100,7 +100,7 @@ export const CommentIcon = () => {
   );
 };
 
-export const DefaultAvatar = () => {
+const DefaultAvatar = () => {
   return (
     <svg
       version="1.1"
@@ -170,4 +170,15 @@ export const DefaultAvatar = () => {
       <g></g>
     </svg>
   );
+};
+
+export {
+  InstagramIcon,
+  HomeIcon,
+  CompassIcon,
+  FilledHeartIcon,
+  HeartIcon,
+  ChatIcon,
+  CommentIcon,
+  DefaultAvatar,
 };
