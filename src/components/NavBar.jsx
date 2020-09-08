@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  HeartIcon,
-  InstagramIcon,
-  HomeIcon,
-  CompassIcon,
-  DefaultAvatar,
-} from "./Icons";
+import { HeartIcon, HomeIcon, InstagramIcon, DefaultAvatar, CompassIcon } from "./Icons";
 import UploadImage from "./UploadImage";
 import "../styles/App.css";
 
