@@ -32,13 +32,13 @@ const LoginForm = () => {
       localStorage.setItem("user", user);
       setMessage("Login in successfully!");
       setUser(user);
-      setShow(true);
+      // setShow(true);
     } else {
       setMessage(body.message);
+      setShow(true);
+      password.setValue("");
+      username.setValue("");
     }
-    setShow(true);
-    password.setValue("");
-    username.setValue("");
   };
 
   const MyToast = () => {
