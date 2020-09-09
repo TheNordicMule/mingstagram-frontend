@@ -1,6 +1,9 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0b08edce-054e-4f09-9de3-a8eeff35d8f8/deploy-status)](https://app.netlify.com/sites/mingstagram-frontend/deploys)
 
 
+Watch a [demo](https://mingstagram-frontend.netlify.app/) here
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
