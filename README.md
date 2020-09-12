@@ -3,6 +3,9 @@
 
 Watch a [demo](https://mingstagram-frontend.netlify.app/) here
 
+A work in progress!
+Currently support user signup/signin, comments,posts, and likes.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
